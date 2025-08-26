@@ -23,4 +23,28 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
+  /* Only main scrollbar visible */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Hide all other scrollbars */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Restore scrollbar for body */
+body {
+  scrollbar-width: auto; /* Firefox */
+  -ms-overflow-style: auto; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: block; /* Chrome, Safari, Opera */
 }
