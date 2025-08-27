@@ -5,6 +5,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
+// Import the asset instead of using string URL
+import paperPlaneGirl from "@/public/photos/paper-plane-girl.png";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const ContactSection = () => {
@@ -61,10 +64,8 @@ const ContactSection = () => {
             Let’s Make It Happen Together!
           </h1>
           <Image
-            src="/photos/paper-plane-girl.png" // ✅ put file inside public/photos/
+            src={paperPlaneGirl} // ✅ imported instead of URL string
             alt="Girl on paper plane"
-            width={300}
-            height={300}
             className="w-72 mx-auto lg:mx-0 mt-4"
           />
         </div>

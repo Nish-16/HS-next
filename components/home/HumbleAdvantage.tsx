@@ -1,11 +1,13 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import HoverCard from "./HoverCard";
+import bgImage from "../public/photos/humble-bg.png"; // ✅ imported background
 
 const HumbleAdvantage = () => {
   const headingRef = useRef<HTMLDivElement | null>(null);
@@ -53,7 +55,7 @@ const HumbleAdvantage = () => {
     <section
       id="about"
       className="w-full py-20 px-6 text-white bg-cover relative z-10 bg-center"
-      style={{ backgroundImage: "url('/photos/humble-bg.png')" }}
+      style={{ backgroundImage: `url(${bgImage.src})` }} // ✅ use .src from imported file
     >
       <div className="max-w-7xl mx-auto text-center">
         <div ref={headingRef}>
@@ -61,13 +63,15 @@ const HumbleAdvantage = () => {
             Three Pillars That Propel Your Project From Vision To Victory.
           </h3>
           <h2 className="text-4xl md:text-5xl font-semibold">
-            The <span className="font-avenir-regular text-blue-400">Humble</span> Advantage
+            The{" "}
+            <span className="font-avenir-regular text-blue-400">Humble</span>{" "}
+            Advantage
           </h2>
         </div>
 
         <div
           ref={cardsRef}
-          className="mt-15 flex flex-wrap justify-center gap-8 mb-10"
+          className="mt-16 flex flex-wrap justify-center gap-8 mb-10"
         >
           <HoverCard
             title="Transparent Collaboration & Accountability"

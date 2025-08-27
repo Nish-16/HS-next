@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Linkedin } from "lucide-react";
 
+// ✅ Import images directly from /public/photos
+import logo from "../public/photos/logo.png";
+import footerIllustration from "../public/photos/footer.png";
+
 const Footer = () => {
   return (
     <footer className="bg-[#0B0F19] text-white px-6 md:px-16 py-12">
@@ -13,7 +17,7 @@ const Footer = () => {
         <div className="flex flex-col gap-10 justify-center items-center md:items-start md:justify-start w-full">
           <div className="space-y-2 w-full flex flex-col items-center md:items-start">
             <Image
-              src="/photos/logo.png"
+              src={logo} // ✅ using import
               alt="Humble Solutions"
               width={180}
               height={60}
@@ -93,7 +97,7 @@ const Footer = () => {
         {/* 5. Right-side Illustration */}
         <div className="flex justify-center md:justify-end items-start w-full">
           <Image
-            src="/photos/footer.png"
+            src={footerIllustration} // ✅ using import
             alt="Footer Illustration"
             width={300}
             height={200}
