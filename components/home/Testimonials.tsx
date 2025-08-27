@@ -19,31 +19,31 @@ const testimonials: Testimonial[] = [
     name: "Tushar Garg",
     role: "Customer",
     text: "Contrary to popular belief, Lorem ipsum dolor sit amet. Lorem quis bibendum auctor, nisi elit consequat ipsum.",
-    image: "./assets/tushar.jpg",
+    image: "/photos/tushar.jpg",
   },
   {
     name: "Yash Agarwal",
     role: "Customer",
     text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-    image: "./assets/yash.jpg",
+    image: "/photos/yash.jpg",
   },
   {
     name: "Sanya Mehra",
     role: "Customer",
     text: "I was very impressed with the speed and professionalism. Would highly recommend!",
-    image: "./assets/sanya.jpg",
+    image: "/photos/sanya.jpg",
   },
   {
     name: "Arjun Verma",
     role: "Customer",
     text: "This service really helped streamline our work. Excellent support team and great results!",
-    image: "./assets/arjun.jpg",
+    image: "/photos/arjun.jpg",
   },
   {
     name: "Priya Singh",
     role: "Customer",
     text: "Effortless experience and outstanding delivery. Thank you!",
-    image: "./assets/priya.jpg",
+    image: "/photos/priya.jpg",
   },
 ];
 
@@ -133,7 +133,9 @@ const Testimonials = () => {
             {testimonials.map((t, index) => (
               <div
                 key={index}
-                className={`snap-center shrink-0 w-[280px] md:w-[300px] flex flex-col justify-between p-6 rounded-xl min-h-[250px] outline-1 outline-blue-400 outline-offset-2 transition-all duration-300 ease-in-out relative ${cardColors[index % cardColors.length]}`}
+                className={`snap-center shrink-0 w-[280px] md:w-[300px] flex flex-col justify-between p-6 rounded-xl min-h-[250px] outline-1 outline-blue-400 outline-offset-2 transition-all duration-300 ease-in-out relative ${
+                  cardColors[index % cardColors.length]
+                }`}
               >
                 <p className="font-avenir-regular text-base text-gray-300 mt-4">
                   {t.text}

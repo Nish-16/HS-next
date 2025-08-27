@@ -118,14 +118,14 @@ const PortfolioSection = ({ portfolioScrollRef }: PortfolioSectionProps) => {
       subtitle: "Task Automation App",
       description:
         "Cyclone helps teams automate repetitive tasks and manage workflows with intuitive UI and real-time sync. Build custom flows, integrate APIs, and supercharge your productivity.",
-      image: "/images/cyclone.png",
+      image: "/photos/cyclone.png",
     },
     {
       title: "Xplore360",
       subtitle: "Travel Discovery Platform",
       description:
         "Explore new destinations, connect with local guides, and plan personalized trips all in one app. Xplore360 is your AI-powered travel assistant.",
-      image: "/images/xplore360.png",
+      image: "/photos/xplore360.png",
     },
   ];
 
@@ -299,7 +299,6 @@ const HomeSections = ({ scrollContainerRef }: HomeSectionsProps) => {
             zIndex: 10,
             opacity,
           }}
-          transition={{ ease: "easeOut" }}
         />
       )}
       <div
