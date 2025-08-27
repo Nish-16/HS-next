@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import HoverCard from "./HoverCard";
-import bgImage from "../public/photos/humble-bg.png"; // ✅ imported background
+import bgImage from "../../public/photos/humble-bg.png"; // ✅ imported background
 
 const HumbleAdvantage = () => {
   const headingRef = useRef<HTMLDivElement | null>(null);
