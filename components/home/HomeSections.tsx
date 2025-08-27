@@ -2,10 +2,20 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image, { StaticImageData } from "next/image";
+
 import ServiceCard from "./ServiceCard";
 import { services } from "./data/services";
 
-// HERO SECTION
+// Import images
+import phone1 from "../../public/photos/phone-1-test.png";
+import phone2 from "../../public/photos/phone-2.png";
+import hand from "../../public/photos/hand.png";
+
+// Placeholder for missing images
+const placeholder = null;
+
+// ---------------- HERO SECTION ----------------
 export const HeroSection = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   return (
@@ -16,11 +26,11 @@ export const HeroSection = () => {
     >
       {/* Left: Text */}
       <div className="flex-1 flex flex-col items-center lg:items-start justify-center text-center lg:text-left space-y-6 lg:p-5">
-        <h1 className=" font-avenir-demibold text-3xl sm:text-4xl md:text-5xl font-bold text-gray-200 leading-tight">
+        <h1 className="font-avenir-demibold text-3xl sm:text-4xl md:text-5xl font-bold text-gray-200 leading-tight">
           Transform Ideas into Intuitive <br />
           <span className="text-blue-400">Digital Experiences.</span>
         </h1>
-        <p className=" font-avenir-regular text-gray-400 text-base sm:text-lg max-w-xl">
+        <p className="font-avenir-regular text-gray-400 text-base sm:text-lg max-w-xl">
           We craft sleek mobile apps, responsive websites, and user-centered
           UI/UX designs...
         </p>
@@ -33,18 +43,17 @@ export const HeroSection = () => {
           </button>
         </div>
       </div>
+
       {/* Right: Phone Images */}
       <div className="flex-1 flex items-center justify-center lg:justify-end w-full mt-8 lg:mt-0">
         <div className="relative w-[200px] h-[280px] sm:w-[240px] sm:h-[320px] md:w-[300px] md:h-[400px] lg:w-[360px] lg:h-[480px] xl:w-[400px] xl:h-[520px]">
-          {/* Static Phone */}
-          <img
-            src="/photos/phone-1-test.png"
+          <Image
+            src={phone1}
             alt="Phone 1"
             className="absolute z-20 rounded-3xl shadow-2xl rotate-[-8deg] w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px] left-[100px] top-[20px]"
           />
-          {/* Second Phone (hidden on md+) */}
-          <img
-            src="/photos/phone-2.png"
+          <Image
+            src={phone2}
             alt="Phone 2"
             className="absolute z-10 rounded-3xl shadow-2xl rotate-[-8deg] w-[120px] sm:w-[140px] md:w-[160px] lg:w-[180px] xl:w-[200px] left-0 top-0 md:hidden"
           />
@@ -54,7 +63,7 @@ export const HeroSection = () => {
   );
 };
 
-// SERVICES SECTION
+// ---------------- SERVICES SECTION ----------------
 export const ServicesSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
@@ -64,18 +73,18 @@ export const ServicesSection = () => {
     >
       {/* Left Image */}
       <div className="flex-1 flex justify-center items-center mb-10 lg:mb-0 relative">
-        <img
-          src="/photos/hand.png"
+        <Image
+          src={hand}
           alt="Hand"
           className="max-w-[350px] sm:max-w-[350px] md:max-w-md lg:max-w-md w-full h-auto z-9"
         />
-        {/* Foreground Phone Image (hidden on md+) */}
-        <img
-          src="/photos/phone-2.png"
+        <Image
+          src={phone2}
           alt="Phone"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[150px] sm:max-w-[180px] md:max-w-[px] lg:max-w-[240px] w-full h-auto z-[30] md:hidden"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[150px] sm:max-w-[180px] lg:max-w-[240px] w-full h-auto z-[30] md:hidden"
         />
       </div>
+
       {/* Right Accordion */}
       <div className="flex-1 flex flex-col items-center lg:items-start">
         <h2 className="text-2xl lg:text-3xl font-semibold text-white mb-2 text-center lg:text-left">
@@ -100,32 +109,38 @@ export const ServicesSection = () => {
   );
 };
 
+// ---------------- PORTFOLIO SECTION ----------------
 type PortfolioSectionProps = {
   portfolioScrollRef: React.RefObject<HTMLDivElement | null>;
 };
 
 const PortfolioSection = ({ portfolioScrollRef }: PortfolioSectionProps) => {
-  const projects = [
+  const projects: {
+    title: string;
+    subtitle: string;
+    description: string;
+    image: StaticImageData | null;
+  }[] = [
     {
       title: "Fintrack",
       subtitle: "Finance Tracking Mobile App",
       description:
         "FinTrack is a smart finance tracking app designed to help you manage expenses, set savings goals, monitor subscriptions, and gain insights into your spending habits. With sleek visuals, personalized suggestions, and weekly progress tracking, FinTrack makes saving simple and efficient – all in one place. Available on iOS and Android.",
-      image: "/photos/phone-2.png",
+      image: phone2,
     },
     {
       title: "Cyclone Manager",
       subtitle: "Task Automation App",
       description:
         "Cyclone helps teams automate repetitive tasks and manage workflows with intuitive UI and real-time sync. Build custom flows, integrate APIs, and supercharge your productivity.",
-      image: "/photos/cyclone.png",
+      image: placeholder,
     },
     {
       title: "Xplore360",
       subtitle: "Travel Discovery Platform",
       description:
         "Explore new destinations, connect with local guides, and plan personalized trips all in one app. Xplore360 is your AI-powered travel assistant.",
-      image: "/photos/xplore360.png",
+      image: placeholder,
     },
   ];
 
@@ -138,9 +153,7 @@ const PortfolioSection = ({ portfolioScrollRef }: PortfolioSectionProps) => {
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 px-6 gap-6 w-full">
         <h2 className="font-avenir-demibold text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
           Here Is A Glimpse Of{" "}
-          <span className="font-avenir-demibold text-blue-400">
-            Our Work....
-          </span>
+          <span className="font-avenir-demibold text-blue-400">Our Work....</span>
         </h2>
         <button className="font-avenir-demibold bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full text-base md:text-lg shadow flex items-center gap-2">
           View Our Portfolio →
@@ -178,12 +191,19 @@ const PortfolioSection = ({ portfolioScrollRef }: PortfolioSectionProps) => {
               </div>
 
               {/* Image Section */}
-              <div className="md:w-1/3 w-full max-w-[300px]">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="rounded-2xl object-cover w-full h-auto max-h-[500px]"
-                />
+              <div className="md:w-1/3 w-full max-w-[300px] flex justify-center items-center">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    className="rounded-2xl object-cover w-full h-auto max-h-[500px]"
+                    placeholder="blur"
+                  />
+                ) : (
+                  <div className="w-full h-[300px] max-h-[500px] bg-gray-700 rounded-2xl flex items-center justify-center text-gray-400 text-sm sm:text-base">
+                    Coming Soon
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -193,7 +213,7 @@ const PortfolioSection = ({ portfolioScrollRef }: PortfolioSectionProps) => {
   );
 };
 
-// COMBINED EXPORT
+// ---------------- HOME SECTIONS WRAPPER ----------------
 type HomeSectionsProps = {
   scrollContainerRef: React.RefObject<HTMLDivElement | null>;
 };
@@ -202,15 +222,13 @@ const HomeSections = ({ scrollContainerRef }: HomeSectionsProps) => {
   const containerRef = scrollContainerRef;
   const { scrollYProgress } = useScroll({ container: containerRef });
 
-  // State for client-side calculations
   const [windowDimensions, setWindowDimensions] = useState({
-    width: 1920, // Default fallback values
+    width: 1920,
     height: 1080,
   });
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Handle client-side window calculations
   useEffect(() => {
     const updateDimensions = () => {
       setWindowDimensions({
@@ -220,51 +238,22 @@ const HomeSections = ({ scrollContainerRef }: HomeSectionsProps) => {
       setIsLargeScreen(window.innerWidth >= 768);
     };
 
-    // Set initial values
     updateDimensions();
     setIsMounted(true);
 
-    // Add resize listener
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  // Convert pixel positions to percentage based on window size
   const startXPercent = (950 / windowDimensions.width) * 100;
   const startYPercent = (90 / windowDimensions.height) * 100;
   const midXPercent = (260 / windowDimensions.width) * 100;
   const midYPercent = (850 / windowDimensions.height) * 100;
 
-  const endXPercent = 40;
-  const endYPercent = 230;
-
-  // Animate position and scale - only first part (hero to services)
-  const xRaw = useTransform(
-    scrollYProgress,
-    [0, 0.5],
-    [startXPercent, midXPercent]
-  );
-  const yRaw = useTransform(
-    scrollYProgress,
-    [0, 0.5],
-    [startYPercent, midYPercent]
-  );
+  const xRaw = useTransform(scrollYProgress, [0, 0.5], [startXPercent, midXPercent]);
+  const yRaw = useTransform(scrollYProgress, [0, 0.5], [startYPercent, midYPercent]);
 
   const portfolioScrollRef = useRef<HTMLDivElement>(null);
-  const [portfolioScroll, setPortfolioScroll] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (portfolioScrollRef.current) {
-        setPortfolioScroll(portfolioScrollRef.current.scrollLeft);
-      }
-    };
-    const el = portfolioScrollRef.current;
-    if (el) {
-      el.addEventListener("scroll", handleScroll);
-      return () => el.removeEventListener("scroll", handleScroll);
-    }
-  }, []);
 
   const x = useTransform(xRaw, (v) => `${v}%`);
   const y = useTransform(yRaw, (v) => `${v}%`);
@@ -282,10 +271,10 @@ const HomeSections = ({ scrollContainerRef }: HomeSectionsProps) => {
       }
       style={{ WebkitOverflowScrolling: "touch" }}
     >
-      {/* Animated phone-2 image for md+ screens - only first part of animation */}
+      {/* Animated phone-2 image for md+ screens */}
       {isMounted && isLargeScreen && (
         <motion.img
-          src="/photos/phone-2.png"
+          src={phone2.src}
           alt="Phone 2"
           className="hidden md:block absolute z-30 rounded-3xl shadow-2xl"
           style={{
@@ -299,33 +288,18 @@ const HomeSections = ({ scrollContainerRef }: HomeSectionsProps) => {
             zIndex: 10,
             opacity,
           }}
+          transition={{ ease: "easeOut" }}
         />
       )}
-      <div
-        className={
-          isLargeScreen
-            ? "snap-start min-h-screen flex items-stretch"
-            : "min-h-screen flex items-stretch"
-        }
-      >
+
+      {/* Sections */}
+      <div className={isLargeScreen ? "snap-start min-h-screen flex items-stretch" : "min-h-screen flex items-stretch"}>
         <HeroSection />
       </div>
-      <div
-        className={
-          isLargeScreen
-            ? "snap-start min-h-screen flex items-stretch"
-            : "min-h-screen flex items-stretch"
-        }
-      >
+      <div className={isLargeScreen ? "snap-start min-h-screen flex items-stretch" : "min-h-screen flex items-stretch"}>
         <ServicesSection />
       </div>
-      <div
-        className={
-          isLargeScreen
-            ? "snap-start min-h-screen flex items-stretch"
-            : "min-h-screen flex items-stretch"
-        }
-      >
+      <div className={isLargeScreen ? "snap-start min-h-screen flex items-stretch" : "min-h-screen flex items-stretch"}>
         <PortfolioSection portfolioScrollRef={portfolioScrollRef} />
       </div>
     </div>

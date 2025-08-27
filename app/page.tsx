@@ -11,6 +11,7 @@ import Accordion from "@/components/home/Accordion";
 import ContactSection from "@/components/home/ContactSection";
 import Footer from "@/components/Footer";
 import HomeSections from "@/components/home/HomeSections";
+import bg from "../public/photos/bg.png"
 
 const Home = () => {
   const scrollSnapRef = useRef<HTMLDivElement>(null);
@@ -19,7 +20,7 @@ const Home = () => {
     <div
       className="w-full bg-cover bg-left-top bg-no-repeat"
       style={{
-        backgroundImage: `url('/photos/bg.png')`, // ✅ from public/photos/
+        backgroundImage: `url(${bg.src})`, // ✅ uses imported image directly
       }}
     >
       <div className="sticky top-5 left-0 right-0 z-50 shadow-md">
